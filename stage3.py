@@ -1,6 +1,10 @@
 import os
 import subprocess
 
+'''
+This stage extract the features of frames obtained after clustering frames
+'''
+
 OPENFACE_LOCATION = '/home/black/OpenFace-master/build/bin/FeatureExtraction'
 
 input_folder_frame = './Frames'

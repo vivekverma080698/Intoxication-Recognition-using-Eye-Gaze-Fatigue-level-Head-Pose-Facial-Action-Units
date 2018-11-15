@@ -3,6 +3,11 @@ import cv2
 import pandas
 import os
 
+'''
+This stage extract all the features ex eyeGaze , eye fatigue , phog features
+'''
+
+
 def getGazeFeatures(filePath):
     features = []
     for csv in os.listdir(filePath):

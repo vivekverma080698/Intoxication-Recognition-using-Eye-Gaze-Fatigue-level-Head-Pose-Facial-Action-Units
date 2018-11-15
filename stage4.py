@@ -1,6 +1,11 @@
 import os
 import subprocess
 
+'''
+This stage extract the mask of faces from the frames using OpenFace Library
+'''
+
+
 def crop_Face():
     OPENFACE_LOCATION = '/home/black/OpenFace-master/build/bin/FeatureExtraction'
     input_folder_frame = './Frames'

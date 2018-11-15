@@ -1,11 +1,13 @@
 import os
 import subprocess
 
-def STAGE1():
-    OPENFACE_LOCATION = '/home/black/OpenFace-master/build/bin/FeatureExtraction'
+'''
+This stage extract features of video using OpenFace library 
+VideoFeatures takes directories of video folder and output folder 
+'''
 
-    input_folder_video = './video'
-    output_folder = './Features'
+def VideoFeatures(input_folder_video,output_folder):
+    OPENFACE_LOCATION = '/home/black/OpenFace-master/build/bin/FeatureExtraction'
 
     files = []
     for f in os.listdir('./video'):
@@ -18,3 +20,8 @@ def STAGE1():
 
     com1 = c1.format(OPENFACE_LOCATION = OPENFACE_LOCATION , videos= videoPaths)
     subprocess.call(com1, shell=True)
+
+# Sample run
+# input_folder_video = './video'
+# output_folder = './Features'
+# VideoFeatures(input_folder_video,output_folder)

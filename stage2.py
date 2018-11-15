@@ -5,6 +5,10 @@ import pandas
 import os,scipy
 from sklearn import preprocessing
 
+'''
+This stage extract the video frames based on clustering
+'''
+
 def processCSV_file():
     input_folder = './Features'
     input_folder_video = './video'
