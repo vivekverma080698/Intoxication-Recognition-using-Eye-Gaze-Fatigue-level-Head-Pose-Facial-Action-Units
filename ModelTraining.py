@@ -77,5 +77,3 @@ if 1:
     Y_test = y[num_of_Train_exp:-1]
 
     model2.fit(X_train, Y_train)
-
-

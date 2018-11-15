@@ -2,12 +2,14 @@ from phogDescriptor import PHogFeatures
 import cv2
 import pandas
 import os
+import csv
+import numpy
 
 '''
 This stage extract all the features ex eyeGaze , eye fatigue , phog features
 '''
 
-def EyeCheckUp(eye0,eye1):#BGR
+def EyeCheckUp(eye0,eye1):
     return 50
 #     h, w ,ch = eye0.shape
 #     originalEye0 = copy.copy(eye0)
@@ -104,7 +106,21 @@ def EyeCheckUp(eye0,eye1):#BGR
 #     #
 #     cv2.waitKey(0)
 #     cv2.destroyAllWindows()
-
+#<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    # cimg = cv2.cvtColor(eye0,cv2.COLOR_BGR2GRAY)
+    #
+    # circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,500, param1=50,param2=30,minRadius=0,maxRadius=0)
+    #
+    # circles = np.uint16(np.around(circles))
+    # for i in circles[0,:]:
+    #     # draw the outer circle
+    #     cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),2)
+    #     # draw the center of the circle
+    #     cv2.circle(cimg,(i[0],i[1]),2,(0,0,255),3)
+    #
+    # cv2.imshow('detected circles',cimg)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
 def getGazeFeatures(filePath):
     features = []
@@ -115,7 +131,25 @@ def getGazeFeatures(filePath):
                 for index, row in reader.iterrows():
                     features.append(row[' gaze_angle_x'])
                     features.append(row[' gaze_angle_y'])
+                    features.append(row[' AU01_c'])
+                    features.append(row[' AU02_c'])
+                    features.append(row[' AU04_c'])
+                    features.append(row[' AU06_c'])
+                    features.append(row[' AU07_c'])
+                    features.append(row[' AU09_c'])
+                    features.append(row[' AU10_c'])
+                    features.append(row[' AU12_c'])
+                    features.append(row[' AU14_c'])
+                    features.append(row[' AU15_c'])
+                    features.append(row[' AU17_c'])
+                    features.append(row[' AU20_c'])
+                    features.append(row[' AU23_c'])
+                    features.append(row[' AU25_c'])
+                    features.append(row[' AU26_c'])
+                    features.append(row[' AU28_c'])
+                    features.append(row[' AU45_c'])
     return features
+
 
 def getEyeFatigueValues(filePath):
     feature = []
@@ -181,14 +215,23 @@ def getPhogFeatures(filePath):
             csvpath = os.path.join(filePath, csv)
             framespath = csvpath.replace('FrameFeature','CroppedFace')
             framespath = framespath.replace('csv', 'bmp')
-            feature.append(phog.get_features(framespath))
+            fetu = phog.get_features(framespath)
+            feature = feature + list(fetu)
     return feature
 
 def ExtractFeatures():
     input_folder = './FrameFeature'
+    X = []
     for f in os.listdir(input_folder):
         filePath = os.path.join(input_folder, f)
-        print filePath
-        videoFeatures = getGazeFeatures(filePath)
+        gazeFeature = getGazeFeatures(filePath)
         eyeFatiguresValues = getEyeFatigueValues(filePath)
         phogFeatures = getPhogFeatures(filePath)
+        result = gazeFeature + eyeFatiguresValues + phogFeatures
+        print len(gazeFeature) ,len(eyeFatiguresValues) ,len(phogFeatures)
+        X.append(result)
+    with open("Features.csv", "w") as f:
+        wr = csv.writer(f)
+        wr.writerows(X)
+
+# ExtractFeatures()
