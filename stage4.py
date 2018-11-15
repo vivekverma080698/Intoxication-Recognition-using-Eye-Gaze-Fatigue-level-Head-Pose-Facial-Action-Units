@@ -28,4 +28,6 @@ def crop_Face():
             subprocess.call(cmd2, shell=True)
             subprocess.call('rm -r OpenFace_output/*', shell=True)
             counter +=1
-    print counter
+    print (counter)
+
+crop_Face()
