@@ -4,13 +4,14 @@ import pandas
 import os
 import csv
 import numpy
+import copy
 
 '''
 This stage extract all the features ex eyeGaze , eye fatigue , phog features
 '''
 
 def EyeCheckUp(eye0,eye1):
-    return 50
+    # return 50
 #     h, w ,ch = eye0.shape
 #     originalEye0 = copy.copy(eye0)
 #     whitepixel_0=0
@@ -61,29 +62,68 @@ def EyeCheckUp(eye0,eye1):
 # # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><>
 #
 #
-#     img_yuv0 = cv2.cvtColor(originalEye0, cv2.COLOR_BGR2YUV)
-#     img_yuv1 = cv2.cvtColor(originalEye0, cv2.COLOR_BGR2YUV)
-#     img_yuv2 = cv2.cvtColor(originalEye0, cv2.COLOR_BGR2YUV)
-#
-#     # equalize the histogram of the Y channel
-#     img_yuv0[:, :, 0] = cv2.equalizeHist(img_yuv0[:, :, 0])
-#     img_yuv1[:, :, 1] = cv2.equalizeHist(img_yuv1[:, :, 1])
-#     img_yuv2[:, :, 2] = cv2.equalizeHist(img_yuv2[:, :, 2])
-#
-#     # convert the YUV image back to RGB format
-#     img_output0 = cv2.cvtColor(img_yuv0, cv2.COLOR_YUV2BGR)
-#     img_output1 = cv2.cvtColor(img_yuv1, cv2.COLOR_YUV2BGR)
-#     img_output2 = cv2.cvtColor(img_yuv2, cv2.COLOR_YUV2BGR)
-#
-#     method3 = copy.copy(originalEye0)
-#     for i in range(0,h):
-#         for j in range(0,w):
-#             if img_output0[i][j][0] > 190 and img_output1[i][j][1] > 100 and img_output2[i][j][2] < 150:
-#                 whitepixel_0 = whitepixel_0 + 1
-#                 # if abs(img_output[i][j][2] - img_output[i][j][0]) < 40:
-#                 cv2.circle(method3, (j, i), 2, (255, 0, 0), 1)
-#
-#     cv2.imshow('YUV ',numpy.hstack([originalEye0,img_output0,img_output1,img_output2,method3]))
+    h0, w0 ,ch0 = eye0.shape
+    originalEye0 = copy.copy(eye0)
+    whitepixel_0=0
+    img_yuv0 = cv2.cvtColor(originalEye0, cv2.COLOR_BGR2YUV)
+    img_yuv1 = cv2.cvtColor(originalEye0, cv2.COLOR_BGR2YUV)
+    img_yuv2 = cv2.cvtColor(originalEye0, cv2.COLOR_BGR2YUV)
+
+    # equalize the histogram of the Y channel
+    img_yuv0[:, :, 0] = cv2.equalizeHist(img_yuv0[:, :, 0])
+    img_yuv1[:, :, 1] = cv2.equalizeHist(img_yuv1[:, :, 1])
+    img_yuv2[:, :, 2] = cv2.equalizeHist(img_yuv2[:, :, 2])
+
+    # convert the YUV image back to RGB format
+    img_output0 = cv2.cvtColor(img_yuv0, cv2.COLOR_YUV2BGR)
+    img_output1 = cv2.cvtColor(img_yuv1, cv2.COLOR_YUV2BGR)
+    img_output2 = cv2.cvtColor(img_yuv2, cv2.COLOR_YUV2BGR)
+
+    method3 = copy.copy(originalEye0)
+    for i in range(0,h0):
+        for j in range(0,w0):
+            if img_output0[i][j][0] > 190 and img_output1[i][j][1] > 100 and img_output2[i][j][2] < 150:
+                whitepixel_0 = whitepixel_0 + 1
+                # cv2.circle(method3, (j, i), 2, (255, 0, 0), 1)
+    #
+    # cv2.imshow('YUV ',numpy.hstack([originalEye0,img_output0,img_output1,img_output2,method3]))
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    h1, w1 ,ch1 = eye1.shape
+    originalEye1 = copy.copy(eye1)
+    whitepixel_1=0
+    img_yuv0 = cv2.cvtColor(originalEye1, cv2.COLOR_BGR2YUV)
+    img_yuv1 = cv2.cvtColor(originalEye1, cv2.COLOR_BGR2YUV)
+    img_yuv2 = cv2.cvtColor(originalEye1, cv2.COLOR_BGR2YUV)
+
+    # equalize the histogram of the Y channel
+    img_yuv0[:, :, 0] = cv2.equalizeHist(img_yuv0[:, :, 0])
+    img_yuv1[:, :, 1] = cv2.equalizeHist(img_yuv1[:, :, 1])
+    img_yuv2[:, :, 2] = cv2.equalizeHist(img_yuv2[:, :, 2])
+
+    # convert the YUV image back to RGB format
+    img_output0 = cv2.cvtColor(img_yuv0, cv2.COLOR_YUV2BGR)
+    img_output1 = cv2.cvtColor(img_yuv1, cv2.COLOR_YUV2BGR)
+    img_output2 = cv2.cvtColor(img_yuv2, cv2.COLOR_YUV2BGR)
+
+    method3 = copy.copy(originalEye1)
+    for i in range(0,h1):
+        for j in range(0,w1):
+            if img_output0[i][j][0] > 190 and img_output1[i][j][1] > 100 and img_output2[i][j][2] < 150:
+                whitepixel_1 = whitepixel_1 + 1
+                # cv2.circle(method3, (j, i), 2, (255, 0, 0), 1)
+
+    eye0per = float(whitepixel_0)/float((h0*w0))
+    eye1per = float(whitepixel_1)/float((h1*w1))
+
+    print (float((eye0per+eye1per))/2)
+
+
+    # cv2.imshow('YUV ',numpy.hstack([originalEye0,img_output0,img_output1,img_output2,method3]))
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+
+
 #
 # # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><>
 #
@@ -153,6 +193,7 @@ def getGazeFeatures(filePath):
 
 def getEyeFatigueValues(filePath):
     feature = []
+    counter = 0
     for csv in os.listdir(filePath):
         if csv[-3:] == 'csv':
             csvpath = os.path.join(filePath, csv)
@@ -197,6 +238,17 @@ def getEyeFatigueValues(filePath):
                         eye_pupil_y_1.append(valuey)
 
                 image = cv2.imread(framespath)
+                # for (x, y) in zip(eye_pupil_X_0, eye_pupil_y_0):
+                #     cv2.circle(image, (int(x), int(y)), 1, (0, 0, 255), -1)
+                #
+                # for (x, y) in zip(eye_pupil_X_1, eye_pupil_y_1):
+                #     cv2.circle(image, (int(x), int(y)), 1, (0, 0, 255), -1)
+                # cv2.rectangle(image, (int(left_corner_0_x),int(eye_pupil_y_0[2])), (int(right_corner_0_x), int(eye_pupil_y_0[6])), (0, 255, 0), 1)
+                # cv2.rectangle(image, (int(left_corner_1_x),int(eye_pupil_y_1[2])), (int(right_corner_1_x), int(eye_pupil_y_1[6])), (0, 255, 0), 1)
+                # cv2.imshow('image',image);
+                # cv2.waitKey(0)
+                # cv2.destroyAllWindows()
+
                 h1 = abs(int(eye_pupil_y_0[2]) - int(eye_pupil_y_0[6]))
                 w1 = abs(int(right_corner_0_x) - int(left_corner_0_x))
                 eye1 = image[int(eye_pupil_y_0[2]):int(eye_pupil_y_0[2]) + h1, int(left_corner_0_x):int(left_corner_0_x) + w1]
@@ -204,7 +256,12 @@ def getEyeFatigueValues(filePath):
                 h2 = abs(int(eye_pupil_y_1[2]) - int(eye_pupil_y_1[6]))
                 w2 = abs(int(right_corner_1_x) - int(left_corner_1_x))
                 eye2 = image[int(eye_pupil_y_1[2]):int(eye_pupil_y_1[2]) + h2, int(left_corner_1_x):int(left_corner_1_x) + w2]
-                feature.append(EyeCheckUp(eye1, eye2))
+                print (counter,framespath,h1,h2)
+                if h1 > 0  and h2 > 0:
+                    feature.append(EyeCheckUp(eye1, eye2))
+                else:
+                    feature.append(0)
+                counter += 1
     return feature
 
 def getPhogFeatures(filePath):
@@ -224,14 +281,14 @@ def ExtractFeatures():
     X = []
     for f in os.listdir(input_folder):
         filePath = os.path.join(input_folder, f)
-        gazeFeature = getGazeFeatures(filePath)
+        # gazeFeature = getGazeFeatures(filePath)
         eyeFatiguresValues = getEyeFatigueValues(filePath)
-        phogFeatures = getPhogFeatures(filePath)
-        result = gazeFeature + eyeFatiguresValues + phogFeatures
-        print len(gazeFeature) ,len(eyeFatiguresValues) ,len(phogFeatures)
-        X.append(result)
-    with open("Features.csv", "w") as f:
-        wr = csv.writer(f)
-        wr.writerows(X)
+        # phogFeatures = getPhogFeatures(filePath)
+        # result = gazeFeature + eyeFatiguresValues + phogFeatures
+        # print len(gazeFeature) ,len(eyeFatiguresValues) ,len(phogFeatures)
+        # X.append(result)
+    # with open("Features.csv", "w") as f:
+    #     wr = csv.writer(f)
+    #     wr.writerows(X)
 
-# ExtractFeatures()
+ExtractFeatures()
