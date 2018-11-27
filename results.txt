@@ -1,0 +1,53 @@
+1070 train 484 test    75% train data
+
+PHOG model
+64.4
+
+Lpq model
+70.10
+
+Eye and action untis model
+71.19
+
+Lpq + Eye and action untis model 
+67.010
+
+PHOG + Eye and action untis model
+70.36
+
+PHOG + LPQ
+69.32
+
+PHOG + LPQ + Eye and action untis model
+67.5
+
+PHOG & LPQ & Eye and action untis model
+67.268
+
+GRID SEARCH
+-----------------------------------------------------
+1070 train 484 test    75% train data
+
+PHOG model
+64.4
+
+Lpq model
+70.10
+
+Eye and action untis model
+C:10 gamma 0.01 kernel rbf
+
+Lpq + Eye and action untis model 
+67.010
+
+PHOG + Eye and action untis model
+70.36
+
+PHOG + LPQ
+69.32
+
+PHOG + LPQ + Eye and action untis model
+67.5
+
+PHOG & LPQ & Eye and action untis model
+67.268
