@@ -260,8 +260,41 @@ weighted avg       0.64      0.68      0.57       388
 -----------------------------------------
 PHOG + LPQ + OPNF
 -----------------------------------------
+Best parameters
+{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 1, 'gamma': 0.01, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 1, 'gamma': 0.1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 1, 'gamma': 1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 10, 'gamma': 0.001, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 10, 'gamma': 0.01, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 10, 'gamma': 0.1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 10, 'gamma': 1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 18, 'gamma': 0.001, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 18, 'gamma': 0.01, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 18, 'gamma': 0.1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 18, 'gamma': 1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 36, 'gamma': 0.001, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 36, 'gamma': 0.01, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 36, 'gamma': 0.1, 'kernel': 'rbf'}
+0.618 (+/-0.159) for {'C': 36, 'gamma': 1, 'kernel': 'rbf'}
 
-67.5
+Detailed classification report:
+
+The model is trained on the full development set.
+The scores are computed on the full evaluation set.
+
+              precision    recall  f1-score   support
+
+         0.0       0.25      0.03      0.05       110
+         1.0       0.72      0.97      0.82       278
+
+   micro avg       0.70      0.70      0.70       388
+   macro avg       0.48      0.50      0.44       388
+weighted avg       0.58      0.70      0.60       388
+
+
+Accuracy is  70.10309278350516
 -----------------------------------------
 PHOG & LPQ & OPNF
 -----------------------------------------
