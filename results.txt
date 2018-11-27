@@ -68,10 +68,45 @@ weighted avg       0.56      0.71      0.60       388
 
 
 
-
+--------------------------------------------
 Lpq model
-70.10
+Best parameters
+{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 1, 'gamma': 0.01, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 1, 'gamma': 0.1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 1, 'gamma': 1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 10, 'gamma': 0.001, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 10, 'gamma': 0.01, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 10, 'gamma': 0.1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 10, 'gamma': 1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 18, 'gamma': 0.001, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 18, 'gamma': 0.01, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 18, 'gamma': 0.1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 18, 'gamma': 1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 36, 'gamma': 0.001, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 36, 'gamma': 0.01, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 36, 'gamma': 0.1, 'kernel': 'rbf'}
+0.637 (+/-0.180) for {'C': 36, 'gamma': 1, 'kernel': 'rbf'}
 
+Detailed classification report:
+
+The model is trained on the full development set.
+The scores are computed on the full evaluation set.
+
+              precision    recall  f1-score   support
+
+         0.0       0.33      0.01      0.02       114
+         1.0       0.71      0.99      0.83       274
+
+   micro avg       0.70      0.70      0.70       388
+   macro avg       0.52      0.50      0.42       388
+weighted avg       0.60      0.70      0.59       388
+
+
+Accuracy is  70.36082474226804
+
+-----------------------------------------------
 Eye and action untis model
 Best parameters
 {'C': 10, 'gamma': 0.01, 'kernel': 'rbf'}
