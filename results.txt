@@ -180,15 +180,56 @@ weighted avg       0.63      0.68      0.56       388
 
 Accuracy is  68.29896907216495
 
+-----------------------------------------
+PHOG + OPNF
+-----------------------------------------
 
-PHOG + Eye and action untis model
-70.36
+Best parameters
+{'kernel': 'rbf', 'gamma': 0.001, 'C': 1}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 0.001, 'C': 1}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 0.01, 'C': 1}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 0.1, 'C': 1}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 1, 'C': 1}
+0.538 (+/-0.052) for {'kernel': 'rbf', 'gamma': 0.001, 'C': 10}
+0.565 (+/-0.043) for {'kernel': 'rbf', 'gamma': 0.01, 'C': 10}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 0.1, 'C': 10}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 1, 'C': 10}
+0.530 (+/-0.071) for {'kernel': 'rbf', 'gamma': 0.001, 'C': 18}
+0.565 (+/-0.043) for {'kernel': 'rbf', 'gamma': 0.01, 'C': 18}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 0.1, 'C': 18}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 1, 'C': 18}
+0.523 (+/-0.073) for {'kernel': 'rbf', 'gamma': 0.001, 'C': 36}
+0.565 (+/-0.043) for {'kernel': 'rbf', 'gamma': 0.01, 'C': 36}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 0.1, 'C': 36}
+0.582 (+/-0.033) for {'kernel': 'rbf', 'gamma': 1, 'C': 36}
 
+Detailed classification report:
+
+The model is trained on the full development set.
+The scores are computed on the full evaluation set.
+
+              precision    recall  f1-score   support
+
+         0.0       0.33      0.02      0.03       118
+         1.0       0.70      0.99      0.82       270
+
+   micro avg       0.69      0.69      0.69       388
+   macro avg       0.51      0.50      0.42       388
+weighted avg       0.59      0.69      0.58       388
+
+
+Accuracy is  69.0721649484536
+----------------------------------------------
 PHOG + LPQ
+-----------------------------------------
+
 69.32
+-----------------------------------------
+PHOG + LPQ + OPNF
+-----------------------------------------
 
-PHOG + LPQ + Eye and action untis model
 67.5
-
-PHOG & LPQ & Eye and action untis model
+-----------------------------------------
+PHOG & LPQ & OPNF
+-----------------------------------------
 67.268 
